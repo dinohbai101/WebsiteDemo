@@ -1,0 +1,199 @@
+I have an existing HTML homepage. Do NOT change layout, styling, CSS, animations, spacing, or structure.
+
+Only update TEXT CONTENT and section organization based on the following:
+
+Business Name: Shiva Equipments Services
+
+We are NOT a logistics or cargo company.
+We provide heavy equipment on rent.
+
+Our services:
+
+* Hydra (Lever Hydra)
+* Farana cranes (12T, 14T, 15T, 23T)
+* Excavators (200, 210, 220)
+* Blackhole loader (monthly basis)
+
+Rental type:
+
+* Daily
+* Monthly
+* Operator available
+
+---
+
+REQUIRED CHANGES:
+
+1. HERO SECTION:
+
+* Keep design same
+* Update text to:
+  Heading: "POWERING INDUSTRIES WITH EQUIPMENT"
+  Subtext explaining rental business
+* Add 3 bullet points below description:
+  ✔ Daily & Monthly Rental
+  ✔ Operator Available
+  ✔ Trusted by Industrial & Construction Sites
+
+---
+
+2. REMOVE DUPLICATION:
+
+* Merge "Services" and "Fleet" into ONE section
+* Rename section to: "OUR EQUIPMENT"
+* Show 4 cards:
+
+  * Hydra Crane (Lever Hydra)
+  * Farana Crane (12T / 14T / 15T / 23T)
+  * Excavators (200 / 210 / 220)
+  * Blackhole Loader (Monthly)
+
+---
+
+3. REMOVE LOGISTICS CONTENT:
+
+* Remove or replace:
+
+  * cargo
+  * shipment
+  * logistics
+  * GPS tracking
+  * cold chain
+  * factory to port
+  * delivery related wording
+
+---
+
+4. WHY US SECTION:
+   Replace with:
+
+01 – Reliable Equipment
+Well-maintained machines ready for site work
+
+02 – Flexible Rental
+Daily and monthly options
+
+03 – Experienced Operators
+Skilled operators available
+
+04 – Trusted Locally
+Serving industrial & construction clients
+
+---
+
+5. TICKER:
+   Replace with:
+
+* Hydra Crane Rental
+* Excavator Rental
+* Farana Crane 12T–23T
+* Blackhole Loader
+* Daily / Monthly Rental
+* Industrial Equipment
+* Operator Available
+
+---
+
+6. NAVBAR:
+   Update labels:
+
+* Services → Equipment
+* Remove Fleet if duplicate
+* Keep: Equipment, Coverage, Why Us, Contact
+
+---
+
+IMPORTANT:
+
+* Do NOT redesign anything
+* Do NOT change CSS
+* Only modify content and structure logically
+* Return FULL updated HTML
+
+//////////// PROMPT 2 ///////////////////////
+
+Now enhance the SAME HTML to make it a high-conversion business website.
+
+Do NOT break existing design or layout.
+
+Add the following features:
+
+---
+
+1. FLOATING WHATSAPP BUTTON (BOTTOM RIGHT)
+
+* Fixed position button
+* Green WhatsApp style
+* Opens link: https://wa.me/918001234567
+* Add hover effect
+* Keep it minimal and clean
+
+---
+
+2. STICKY CALL BUTTON (MOBILE + DESKTOP)
+
+* Small fixed button (bottom or top)
+* Text: "Call Now"
+* Link: tel:+918001234567
+* Should not block content
+
+---
+
+3. LEAD CAPTURE FORM (VERY IMPORTANT)
+
+Add a section above CTA:
+
+Fields:
+
+* Name
+* Phone Number
+* Requirement (dropdown: Hydra / Excavator / Crane / Other)
+
+Button:
+"Request Callback"
+
+Design:
+
+* Match existing theme
+* Dark UI with orange accent
+
+---
+
+4. INDUSTRIES WE SERVE SECTION
+
+Add new section:
+
+Title: "Industries We Serve"
+
+Items:
+
+* Construction
+* Steel Plants
+* Mining
+* Infrastructure Projects
+
+Simple grid cards (reuse existing styles)
+
+---
+
+5. TRUST LINE IN HERO
+
+Add ONE line in hero:
+"Trusted by industrial and construction clients across Odisha"
+
+---
+
+6. CTA IMPROVEMENT
+
+Update CTA text:
+"Call us now for fast equipment availability"
+
+---
+
+IMPORTANT:
+
+* Keep UI consistent
+* Reuse existing CSS classes wherever possible
+* Do NOT add heavy libraries
+* Keep it clean and professional
+* Return FULL updated HTML
