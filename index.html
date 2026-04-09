@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shiva Equipments Services – Trusted Truck Logistics</title>
+  <title>Shiva Equipments Services – Heavy Equipment Rental</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap"
     rel="stylesheet" />
@@ -518,29 +518,41 @@
     }
 
     /* SERVICES */
-    .services-grid {
+    .services {
+      padding: 120px 5% 80px;
+      position: relative;
+    }
+
+    .services-grid,
+    .svc-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 32px;
     }
 
     .svc-card {
-      background: var(--steel);
-      padding: 40px 32px;
+      background: linear-gradient(135deg, rgba(42, 46, 53, 0.3), rgba(26, 26, 26, 0.5));
+      border: 1px solid rgba(232, 83, 10, 0.2);
+      padding: 44px;
+      clip-path: polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px);
       position: relative;
-      overflow: hidden;
-      cursor: default;
-      transition: background 0.3s;
-      border-bottom: 3px solid transparent;
+      transition: border-color 0.3s, transform 0.3s;
     }
 
     .svc-card:hover {
-      background: var(--ash);
-      border-bottom-color: var(--saffron);
+      border-color: rgba(232, 83, 10, 0.6);
+      transform: translateY(-4px);
     }
 
-    .svc-card:hover .svc-icon {
-      color: var(--saffron);
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--saffron);
+      clip-path: polygon(0% 0%, calc(100% - 8px) 0%, 100% 100%, 0% 100%);
     }
 
     .svc-num {
@@ -563,15 +575,14 @@
 
     .svc-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 26px;
+      font-size: 28px;
       letter-spacing: 1px;
       color: var(--white);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
 
     .svc-desc {
       font-size: 14px;
-      font-weight: 300;
       line-height: 1.7;
       color: var(--light-ash);
     }
@@ -822,12 +833,31 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
       margin-top: 60px;
+      position: relative;
+      min-height: 280px;
     }
 
     .tc {
       background: var(--steel);
       padding: 36px;
       border-left: 3px solid var(--saffron);
+      opacity: 0;
+      animation: fadeInTestimonial 0.6s ease-out forwards;
+    }
+
+    .tc.hidden {
+      display: none;
+    }
+
+    @keyframes fadeInTestimonial {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .tq {
@@ -1068,7 +1098,8 @@
         grid-template-columns: 1fr;
       }
 
-      .services-grid {
+      .services-grid,
+      .svc-grid {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -1091,6 +1122,7 @@
       }
 
       .services-grid,
+      .svc-grid,
       .fleet-grid,
       .testi-grid {
         grid-template-columns: 1fr;
@@ -1114,6 +1146,60 @@
         flex-direction: column;
       }
     }
+    /* WHATSAPP FLOATING BUTTON */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+      }
+    }
+
+    /* CLICKABLE EQUIPMENT AND LOCATION ITEMS */
+    .equipment-card {
+      cursor: pointer;
+    }
+
+    .equipment-card:hover {
+      border-color: rgba(232, 83, 10, 0.8);
+    }
+
+    .location-item {
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .location-item:hover {
+      transform: translateY(-2px);
+      background: rgba(232, 83, 10, 0.1);
+    }
   </style>
 </head>
 
@@ -1125,14 +1211,13 @@
       <div class="logo-emblem">S</div>
       <div class="logo-text">
         <span class="t1">Shiva Equipments</span>
-        <span class="t2">Services · Logistics</span>
+        <span class="t2">Services · Equipment Rental</span>
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#fleet">Fleet</a></li>
+      <li><a href="#equipment">Equipment</a></li>
       <li><a href="#coverage">Coverage</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#about">Why Us</a></li>
       <li><a href="#contact" class="nav-cta">Get Quote</a></li>
     </ul>
   </nav>
@@ -1141,73 +1226,72 @@
   <section class="hero" id="home">
     <div class="hero-bg-lines"></div>
     <div class="hero-glow"></div>
+    
     <div class="hero-content">
-      <div class="hero-eyebrow">Trusted Road Logistics Since 2005</div>
+      <div class="hero-eyebrow">Reliable Equipment Rental Services</div>
       <h1 class="hero-title">
-        MOVING<br />
-        <span class="outline">INDIA'S</span><br />
-        <span class="accent">CARGO</span><br />
-        FORWARD
+        POWERING<br />
+        <span class="outline">INDUSTRIES</span><br />
+        WITH <span class="accent">EQUIPMENT</span>
       </h1>
-      <p class="hero-sub">Shiva Equipments Services delivers end-to-end truck logistics — full truckload, heavy haulage,
-        and cold chain — across every major corridor in India.</p>
+      <p class="hero-sub">
+        We provide heavy equipment on rent for industrial and construction sites across Odisha — serving daily and monthly rental needs with well-maintained machines and skilled operators.
+      </p>
+      <p class="hero-sub" style="margin-top: 16px; font-size: 14px; opacity: 0.8;">
+        Trusted by industrial and construction clients across Odisha
+      </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Request a Quote →</a>
-        <a href="#services" class="btn-ghost">Our Services ↓</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-num">500+</div>
-          <div class="stat-lbl">Trucks in Fleet</div>
+        <div class="stat-item">
+          <div class="stat-icon">✔</div>
+          <div class="stat-content">
+            <p>Daily & Monthly Rental</p>
+          </div>
         </div>
-        <div class="stat">
-          <div class="stat-num">28</div>
-          <div class="stat-lbl">States Covered</div>
+        <div class="stat-item">
+          <div class="stat-icon">✔</div>
+          <div class="stat-content">
+            <p>Operator Available</p>
+          </div>
         </div>
-        <div class="stat">
-          <div class="stat-num">20+</div>
-          <div class="stat-lbl">Years Experience</div>
+        <div class="stat-item">
+          <div class="stat-icon">✔</div>
+          <div class="stat-content">
+            <p>Trusted by Industrial & Construction Sites</p>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="hero-visual">
-      <div class="truck-card">
-        <div class="truck-wrap">
-          <div class="live-badge">● Live Dispatch</div>
-          <svg viewBox="0 0 340 130" width="300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="30" width="210" height="70" rx="4" fill="#2A2E35" stroke="#E8530A" stroke-width="1.5" />
-            <rect x="10" y="30" width="210" height="8" rx="2" fill="#E8530A" opacity="0.8" />
-            <text x="80" y="76" fill="rgba(232,83,10,0.45)" font-family="sans-serif" font-size="26" font-weight="900"
-              letter-spacing="6">SSE</text>
-            <rect x="220" y="40" width="100" height="60" rx="6" fill="#3D4148" stroke="#E8530A" stroke-width="1.5" />
-            <rect x="264" y="46" width="46" height="32" rx="3" fill="#1A2030" stroke="rgba(232,83,10,0.4)"
-              stroke-width="1" />
-            <rect x="222" y="20" width="6" height="22" rx="2" fill="#3D4148" stroke="#E8530A" stroke-width="1" />
-            <circle cx="225" cy="16" r="4" fill="rgba(232,83,10,0.15)" />
-            <circle cx="228" cy="10" r="3" fill="rgba(232,83,10,0.08)" />
-            <circle cx="275" cy="104" r="16" fill="#1A1A1A" stroke="#E8530A" stroke-width="2" />
-            <circle cx="275" cy="104" r="8" fill="#3D4148" stroke="#E8530A" stroke-width="1" />
-            <circle cx="68" cy="104" r="16" fill="#1A1A1A" stroke="#E8530A" stroke-width="2" />
-            <circle cx="68" cy="104" r="8" fill="#3D4148" stroke="#E8530A" stroke-width="1" />
-            <circle cx="112" cy="104" r="16" fill="#1A1A1A" stroke="#E8530A" stroke-width="2" />
-            <circle cx="112" cy="104" r="8" fill="#3D4148" stroke="#E8530A" stroke-width="1" />
-            <ellipse cx="160" cy="124" rx="155" ry="5" fill="rgba(0,0,0,0.4)" />
-          </svg>
-        </div>
-        <div class="card-grid">
-          <div class="ci"><label>Load Type</label><span>Full Truck Load</span></div>
-          <div class="ci"><label>Capacity</label><span>Up to 40 Tons</span></div>
-          <div class="ci"><label>Status</label><span style="color:#4ADE80;">● Active</span></div>
-          <div class="ci"><label>ETA</label><span>On Schedule</span></div>
-        </div>
-        <div class="route-bar">
-          <div class="rdot"></div>
-          <div class="rline"></div>
-          <div class="rdot-e"></div>
-        </div>
-        <div class="route-lbl">
-          <span>📍 Rourkela</span>
-          <span>📍 Mumbai</span>
+      <div class="hero-truck">
+        <div class="truck-frame">
+          <div style="text-align: center; margin-bottom: 24px;">
+            <div class="sec-label" style="justify-content: center; margin-bottom: 16px;">Featured Equipment</div>
+            <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--white); letter-spacing: 2px; line-height: 1;">HYDRA CRANE</h3>
+          </div>
+          <div class="truck-stats">
+            <div class="stat-item">
+              <div class="stat-icon">🏗️</div>
+              <div class="stat-content">
+                <h4>12–23 Ton</h4>
+                <p>Capacity Range</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">✅</div>
+              <div class="stat-content">
+                <h4>Available Now</h4>
+                <p>Ready for Deployment</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">👷</div>
+              <div class="stat-content">
+                <h4>With Operator</h4>
+                <p>Skilled & Certified</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1216,66 +1300,88 @@
   <!-- TICKER -->
   <div class="ticker">
     <div class="ticker-inner">
-      <span class="ticker-item">Full Truckload (FTL)</span>
-      <span class="ticker-item">Part Truckload (PTL)</span>
-      <span class="ticker-item">Hazardous Cargo</span>
-      <span class="ticker-item">Refrigerated Transport</span>
-      <span class="ticker-item">Heavy Haulage</span>
-      <span class="ticker-item">Express Delivery</span>
-      <span class="ticker-item">Pan-India Coverage</span>
-      <span class="ticker-item">24×7 Support</span>
-      <span class="ticker-item">GPS Tracking</span>
-      <span class="ticker-item">Full Truckload (FTL)</span>
-      <span class="ticker-item">Part Truckload (PTL)</span>
-      <span class="ticker-item">Hazardous Cargo</span>
-      <span class="ticker-item">Refrigerated Transport</span>
-      <span class="ticker-item">Heavy Haulage</span>
-      <span class="ticker-item">Express Delivery</span>
-      <span class="ticker-item">Pan-India Coverage</span>
-      <span class="ticker-item">24×7 Support</span>
-      <span class="ticker-item">GPS Tracking</span>
+      <span class="ticker-item">Hydra Crane Rental</span>
+      <span class="ticker-item">Excavator Rental</span>
+      <span class="ticker-item">Farana Crane 12T–23T</span>
+      <span class="ticker-item">Blackhole Loader</span>
+      <span class="ticker-item">Daily / Monthly Rental</span>
+      <span class="ticker-item">Industrial Equipment</span>
+      <span class="ticker-item">Operator Available</span>
+      <span class="ticker-item">Hydra Crane Rental</span>
+      <span class="ticker-item">Excavator Rental</span>
+      <span class="ticker-item">Farana Crane 12T–23T</span>
+      <span class="ticker-item">Blackhole Loader</span>
+      <span class="ticker-item">Daily / Monthly Rental</span>
+      <span class="ticker-item">Industrial Equipment</span>
+      <span class="ticker-item">Operator Available</span>
     </div>
   </div>
 
-  <!-- SERVICES -->
-  <section class="section" id="services">
+  <!-- OUR EQUIPMENT -->
+  <section class="services" id="equipment">
     <div class="section-header">
       <div>
-        <div class="sec-label">What We Do</div>
-        <h2 class="sec-title">OUR <span class="dim">SERVICES</span></h2>
+        <div class="sec-label">What We Offer</div>
+        <h2 class="sec-title">OUR <span class="accent">EQUIPMENT</span></h2>
       </div>
-      <a href="#contact" class="btn-primary">All Services →</a>
     </div>
-    <div class="services-grid">
-      <div class="svc-card"><span class="svc-num">01</span><span class="svc-icon">🚛</span>
-        <div class="svc-name">Full Truck Load</div>
-        <p class="svc-desc">Dedicated truck for your consignment — maximum security, faster transit, optimal for bulk
-          shipments across long corridors.</p><span class="svc-tag">FTL</span>
+    <div class="svc-grid">
+
+      <div class="svc-card equipment-card" data-equipment="Hydra Crane (Lever Hydra)">
+        <div class="svc-name">Hydra Crane (Lever Hydra)</div>
+        <p class="svc-desc">Efficient lifting equipment for industrial and construction work. Perfect for material handling and site operations.</p>
       </div>
-      <div class="svc-card"><span class="svc-num">02</span><span class="svc-icon">📦</span>
-        <div class="svc-name">Part Truck Load</div>
-        <p class="svc-desc">Cost-efficient shared-truck model for smaller loads. We consolidate shipments without
-          compromising delivery timelines.</p><span class="svc-tag">PTL</span>
+
+      <div class="svc-card equipment-card" data-equipment="Farana Crane (12T / 14T / 15T / 23T)">
+        <div class="svc-name">Farana Crane (12T / 14T / 15T / 23T)</div>
+        <p class="svc-desc">Heavy-duty cranes available in multiple tonnage options — 12T, 14T, 15T, and 23T capacities for various heavy lifting needs.</p>
       </div>
-      <div class="svc-card"><span class="svc-num">03</span><span class="svc-icon">⚙️</span>
-        <div class="svc-name">Heavy Haulage</div>
-        <p class="svc-desc">Specialised equipment and experienced operators for over-dimensional cargo, industrial
-          machinery, and project cargo.</p><span class="svc-tag">ODC</span>
+
+      <div class="svc-card equipment-card" data-equipment="Excavators (200 / 210 / 220)">
+        <div class="svc-name">Excavators (200 / 210 / 220)</div>
+        <p class="svc-desc">Models 200, 210, 220 for digging, earthmoving, and construction projects across industrial sites.</p>
       </div>
-      <div class="svc-card"><span class="svc-num">04</span><span class="svc-icon">🌡️</span>
-        <div class="svc-name">Reefer Transport</div>
-        <p class="svc-desc">Temperature-controlled fleet for pharmaceuticals, perishables, and food-grade cargo
-          requiring strict cold-chain management.</p><span class="svc-tag">Cold Chain</span>
+
+      <div class="svc-card equipment-card" data-equipment="Blackhole Loader (Monthly)">
+        <div class="svc-name">Blackhole Loader (Monthly)</div>
+        <p class="svc-desc">Available on monthly rental basis for heavy loading and site operations. Ideal for long-term industrial usage.</p>
       </div>
-      <div class="svc-card"><span class="svc-num">05</span><span class="svc-icon">⚡</span>
-        <div class="svc-name">Express Freight</div>
-        <p class="svc-desc">Time-critical consignments delivered faster with dedicated lanes, priority loading, and
-          real-time GPS monitoring.</p><span class="svc-tag">Priority</span>
+
+    </div>
+  </section>
+
+  <!-- COVERAGE -->
+  <section class="coverage" id="coverage">
+    <div class="section-header">
+      <div>
+        <div class="sec-label">Service Area</div>
+        <h2 class="sec-title">COVERAGE <span class="accent">ZONES</span></h2>
       </div>
-      <div class="svc-card"><span class="svc-num">06</span><span class="svc-icon">🏭</span>
-        <div class="svc-name">Factory-to-Port</div>
-        <p class="svc-desc">Seamless last-mile and port-connectivity logistics for exporters and importers moving cargo
-          through major Indian ports.</p><span class="svc-tag">Export/Import</span>
+    </div>
+    <div class="cov-grid">
+      <div class="cov-item location-item" data-location="Sambalpur">
+        <div class="cov-state">Sambalpur</div>
+        <div class="cov-region">Western Odisha</div>
+      </div>
+      <div class="cov-item location-item" data-location="Angul">
+        <div class="cov-state">Angul</div>
+        <div class="cov-region">Central Odisha</div>
+      </div>
+      <div class="cov-item location-item" data-location="Jharsuguda">
+        <div class="cov-state">Jharsuguda</div>
+        <div class="cov-region">Western Odisha</div>
+      </div>
+      <div class="cov-item location-item" data-location="Dhenkanal">
+        <div class="cov-state">Dhenkanal</div>
+        <div class="cov-region">Central Odisha</div>
+      </div>
+      <div class="cov-item location-item" data-location="Sundargarh">
+        <div class="cov-state">Sundargarh</div>
+        <div class="cov-region">Northern Odisha</div>
+      </div>
+      <div class="cov-item location-item" data-location="All Over Odisha">
+        <div class="cov-state">All Over Odisha</div>
+        <div class="cov-region">Full Coverage</div>
       </div>
     </div>
   </section>
@@ -1285,13 +1391,13 @@
     <div class="why-vis">
       <div class="why-bg-num">20</div>
       <div class="why-box">
-        <div class="metric">99.2%</div>
-        <p>On-time delivery rate across all routes and load types in the last financial year.</p>
+        <div class="metric">100%</div>
+        <p>Equipment uptime and reliability with regular maintenance and quality checks for uninterrupted site operations.</p>
         <div class="badges">
-          <span class="badge">ISO Certified</span>
-          <span class="badge">GPS Tracked</span>
-          <span class="badge">Insured Cargo</span>
-          <span class="badge">24×7 Ops</span>
+          <span class="badge">Daily Rental</span>
+          <span class="badge">Monthly Rental</span>
+          <span class="badge">Skilled Operators</span>
+          <span class="badge">24×7 Support</span>
         </div>
       </div>
     </div>
@@ -1303,107 +1409,32 @@
         <li class="wi">
           <div class="wi-num">01</div>
           <div>
-            <h4>Real-Time GPS Tracking</h4>
-            <p>Track every consignment live from pickup to delivery via our web and mobile portal. Full transparency,
-              zero guesswork.</p>
+            <h4>Reliable Equipment</h4>
+            <p>Well-maintained machines ready for site work. Regular servicing and quality checks ensure your operations run smoothly without downtime.</p>
           </div>
         </li>
         <li class="wi">
           <div class="wi-num">02</div>
           <div>
-            <h4>Dedicated Account Managers</h4>
-            <p>Every client gets a named account manager. One call resolves everything — no IVR mazes, no ticket queues.
-            </p>
+            <h4>Flexible Rental</h4>
+            <p>Daily and monthly rental options to suit your project timelines. Whether short-term or long-term, we have solutions that fit your needs.</p>
           </div>
         </li>
         <li class="wi">
           <div class="wi-num">03</div>
           <div>
-            <h4>Full Cargo Insurance</h4>
-            <p>All shipments are covered with comprehensive cargo insurance. Your goods are our responsibility from dock
-              to door.</p>
+            <h4>Experienced Operators</h4>
+            <p>Skilled operators available with equipment rental. Trained professionals who know how to handle heavy machinery efficiently and safely.</p>
           </div>
         </li>
         <li class="wi">
           <div class="wi-num">04</div>
           <div>
-            <h4>Pan-India Network</h4>
-            <p>Owned hubs in 12 cities and partner terminals across 28 states. No destination is out of reach.</p>
+            <h4>Trusted Locally</h4>
+            <p>Serving industrial and construction clients across Odisha. Built a strong reputation through reliable service and on-time equipment availability.</p>
           </div>
         </li>
       </ul>
-    </div>
-  </section>
-
-  <!-- COVERAGE -->
-  <section class="coverage" id="coverage">
-    <div class="section-header">
-      <div>
-        <div class="sec-label">Pan-India Reach</div>
-        <h2 class="sec-title">COVERAGE <span class="dim">ZONES</span></h2>
-      </div>
-    </div>
-    <div class="cov-grid">
-      <div class="cov-item">
-        <div class="cov-state">Sambalpur</div>
-        <div class="cov-region">Western Odisha</div>
-      </div>
-      <div class="cov-item">
-        <div class="cov-state">Angul</div>
-        <div class="cov-region">Central Odisha</div>
-      </div>
-      <div class="cov-item">
-        <div class="cov-state">Jharsuguda</div>
-        <div class="cov-region">Western Odisha</div>
-      </div>
-      <div class="cov-item">
-        <div class="cov-state">Dhenkanal</div>
-        <div class="cov-region">Central Odisha</div>
-      </div>
-      <div class="cov-item">
-        <div class="cov-state">Sundargarh</div>
-        <div class="cov-region">Northern Odisha</div>
-      </div>
-      <div class="cov-item">
-        <div class="cov-state">All Over Odisha</div>
-        <div class="cov-region">Full Coverage</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FLEET -->
-  <section class="fleet" id="fleet">
-    <div class="section-header">
-      <div>
-        <div class="sec-label">Our Assets</div>
-        <h2 class="sec-title">THE <span class="dim">FLEET</span></h2>
-      </div>
-    </div>
-    <div class="fleet-grid">
-      <div class="fc">
-        <div class="fc-top">🚛</div>
-        <div class="fc-body">
-          <h3>Multi-Axle Trucks</h3>
-          <p>High-capacity 20–40 ton heavy transport vehicles for industrial and bulk freight across long hauls.</p>
-          <div class="specs"><span>20–40 Tons</span><span>Long Haul</span><span>GPS Enabled</span></div>
-        </div>
-      </div>
-      <div class="fc">
-        <div class="fc-top">🚚</div>
-        <div class="fc-body">
-          <h3>Medium Trucks</h3>
-          <p>Versatile 10–15 ton vehicles for urban deliveries, state-level distribution, and warehouse movement.</p>
-          <div class="specs"><span>10–15 Tons</span><span>State Routes</span><span>Curtain-Side</span></div>
-        </div>
-      </div>
-      <div class="fc">
-        <div class="fc-top">🧊</div>
-        <div class="fc-body">
-          <h3>Reefer Units</h3>
-          <p>Temperature-controlled reefer trucks with -20°C to +8°C range for pharma and perishables.</p>
-          <div class="specs"><span>Cold Chain</span><span>Pharma Grade</span><span>IoT Monitored</span></div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1418,49 +1449,45 @@
     <div class="testi-grid">
       <div class="tc">
         <div class="tq">"</div>
-        <p class="tt">Shiva Equipments Services has been our logistics partner for over 6 years. Their reliability and
-          transparent tracking have made them an indispensable part of our supply chain.</p>
+        <p class="tt">Shiva Equipments Services has been our equipment partner for over 4 years. Their reliable machines and on-time availability have made them essential to our construction operations.</p>
         <div class="ta">
           <div class="av">R</div>
           <div>
             <div class="aname">Ramesh Patel</div>
-            <div class="aco">Operations Head, Tata Steel Distribution</div>
+            <div class="aco">Site Manager, Industrial Construction</div>
           </div>
         </div>
       </div>
       <div class="tc">
         <div class="tq">"</div>
-        <p class="tt">Cold-chain perfection. Our pharmaceutical shipments reach temperature-controlled across 1200+ km
-          routes without a single deviation. Absolutely dependable.</p>
+        <p class="tt">Quality equipment with skilled operators. The excavators and cranes work flawlessly on our sites, and the monthly rental terms are very flexible for long-term projects.</p>
         <div class="ta">
           <div class="av">S</div>
           <div>
             <div class="aname">Sunita Mohanty</div>
-            <div class="aco">Logistics Manager, Sun Pharma – East</div>
+            <div class="aco">Project Head, Infrastructure Development</div>
           </div>
         </div>
       </div>
       <div class="tc">
         <div class="tq">"</div>
-        <p class="tt">Their team handled our ODC machinery transport with precision. The route planning and
-          documentation was flawless — something most logistics companies struggle with.</p>
+        <p class="tt">Their Farana cranes handled our heavy lifting requirements perfectly. Well-maintained equipment and professional operators — exactly what we needed for our factory expansion.</p>
         <div class="ta">
           <div class="av">A</div>
           <div>
             <div class="aname">Anand Gupta</div>
-            <div class="aco">GM Supply Chain, JSW Steel</div>
+            <div class="aco">Operations Manager, Manufacturing Plant</div>
           </div>
         </div>
       </div>
       <div class="tc">
         <div class="tq">"</div>
-        <p class="tt">Switched to Shiva two years ago and haven't looked back. Response time, documentation, driver
-          professionalism — everything is a notch above competitors we've tried.</p>
+        <p class="tt">Switched to Shiva two years ago for our earthmoving needs. Response time, equipment condition, operator expertise — everything is a notch above other rental companies.</p>
         <div class="ta">
           <div class="av">P</div>
           <div>
             <div class="aname">Priya Sinha</div>
-            <div class="aco">Director, EastGate Exports Pvt. Ltd.</div>
+            <div class="aco">Director, Construction Enterprises</div>
           </div>
         </div>
       </div>
@@ -1470,10 +1497,13 @@
   <!-- CTA -->
   <section class="cta-band" id="contact">
     <div>
-      <h2>READY TO MOVE<br />YOUR CARGO?</h2>
-      <p>Get an instant freight quote for your route. Our team responds within 30 minutes — guaranteed.</p>
+      <h2>NEED EQUIPMENT<br />FOR YOUR PROJECT?</h2>
+      <p>Contact us today for reliable heavy equipment rental solutions.</p>
     </div>
-    <a href="tel:+918001234567" class="btn-white">📞 Call Now</a>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <a href="tel:+918001234567" class="btn-white">📞 Call Now</a>
+      <a href="#" id="whatsappCTA" class="btn-white" style="background: #25D366; color: white;">💬 Get Quote on WhatsApp</a>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -1484,43 +1514,42 @@
           <div class="logo-emblem">S</div>
           <div class="logo-text">
             <span class="t1">Shiva Equipments</span>
-            <span class="t2">Services · Logistics</span>
+            <span class="t2">Services · Equipment Rental</span>
           </div>
         </div>
-        <p>Powering India's supply chains with reliable, tech-enabled truck logistics since 2005. From Rourkela to every
-          corner of the nation.</p>
+        <p>Providing reliable heavy equipment rental solutions for industrial and construction sites across Odisha since 2005.</p>
         <div class="fcontact">
           <a href="tel:+918001234567">📞 +91 800 123 4567</a>
-          <a href="mailto:info@shivasecurity.in">✉ info@shivasecurity.in</a>
+          <a href="/cdn-cgi/l/email-protection#93fafdf5fcd3e0fbfae5f2e0f6f0e6e1fae7eabdfafd">✉ <span class="__cf_email__" data-cfemail="b2dbdcd4ddf2c1dadbc4d3c1d7d1c7c0dbc6cb9cdbdc">[email&#160;protected]</span></a>
           <a href="#">📍 NH-55, Rourkela, Odisha – 769001</a>
         </div>
       </div>
       <div class="fc2">
-        <h4>Services</h4>
+        <h4>Equipment</h4>
         <ul>
-          <li><a href="#">Full Truck Load</a></li>
-          <li><a href="#">Part Truck Load</a></li>
-          <li><a href="#">Heavy Haulage</a></li>
-          <li><a href="#">Reefer Transport</a></li>
-          <li><a href="#">Express Freight</a></li>
+          <li><a href="#equipment">Hydra Crane</a></li>
+          <li><a href="#equipment">Farana Crane</a></li>
+          <li><a href="#equipment">Excavators</a></li>
+          <li><a href="#equipment">Blackhole Loader</a></li>
+          <li><a href="#equipment">Daily Rental</a></li>
         </ul>
       </div>
       <div class="fc2">
         <h4>Company</h4>
         <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Fleet</a></li>
-          <li><a href="#">Coverage Map</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#equipment">Equipment</a></li>
+          <li><a href="#coverage">Coverage</a></li>
+          <li><a href="#about">Why Us</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div class="fc2">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="#">Track Shipment</a></li>
-          <li><a href="#">Get Quote</a></li>
-          <li><a href="#">Client Portal</a></li>
+          <li><a href="#contact">Get Quote</a></li>
+          <li><a href="#equipment">View Equipment</a></li>
+          <li><a href="#coverage">Service Areas</a></li>
           <li><a href="#">Privacy Policy</a></li>
           <li><a href="#">Terms of Service</a></li>
         </ul>
@@ -1531,6 +1560,98 @@
       <p style="color:#444;">Designed for reliability. Built for scale.</p>
     </div>
   </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="#" id="whatsappFloat" class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+
+  <script>
+    // WhatsApp Smart System
+    const phoneNumber = '7008670519'; // Replace with actual WhatsApp number
+    let selectedEquipment = '';
+    let selectedLocation = '';
+
+    function getWhatsAppMessage() {
+      let message = 'Hi, I want';
+      
+      if (selectedEquipment && selectedLocation) {
+        message += ` ${selectedEquipment} in ${selectedLocation}`;
+      } else if (selectedEquipment) {
+        message += ` ${selectedEquipment}`;
+      } else if (selectedLocation) {
+        message += ` equipment details in ${selectedLocation}`;
+      } else {
+        message += ' equipment details';
+      }
+      
+      return encodeURIComponent(message);
+    }
+
+    function openWhatsApp() {
+      const message = getWhatsAppMessage();
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+      window.open(whatsappURL, '_blank');
+    }
+
+    // Equipment card click handlers
+    document.querySelectorAll('.equipment-card').forEach(card => {
+      card.addEventListener('click', function() {
+        selectedEquipment = this.getAttribute('data-equipment');
+        // Visual feedback
+        document.querySelectorAll('.equipment-card').forEach(c => c.style.borderColor = '');
+        this.style.borderColor = 'rgba(232, 83, 10, 0.8)';
+      });
+    });
+
+    // Location item click handlers
+    document.querySelectorAll('.location-item').forEach(item => {
+      item.addEventListener('click', function() {
+        selectedLocation = this.getAttribute('data-location');
+        // Visual feedback
+        document.querySelectorAll('.location-item').forEach(i => i.style.background = '');
+        this.style.background = 'rgba(232, 83, 10, 0.1)';
+      });
+    });
+
+    // WhatsApp button click handlers
+    document.getElementById('whatsappFloat').addEventListener('click', function(e) {
+      e.preventDefault();
+      openWhatsApp();
+    });
+
+    document.getElementById('whatsappCTA').addEventListener('click', function(e) {
+      e.preventDefault();
+      openWhatsApp();
+    });
+
+    // Testimonials rotation
+    const testimonials = document.querySelectorAll('.tc');
+    let currentSet = 0;
+    const totalSets = Math.ceil(testimonials.length / 2);
+
+    function showTestimonials(setIndex) {
+      testimonials.forEach((tc, index) => {
+        tc.classList.add('hidden');
+      });
+      
+      const startIndex = setIndex * 2;
+      const endIndex = Math.min(startIndex + 2, testimonials.length);
+      
+      for (let i = startIndex; i < endIndex; i++) {
+        testimonials[i].classList.remove('hidden');
+      }
+    }
+
+    function rotateTestimonials() {
+      currentSet = (currentSet + 1) % totalSets;
+      showTestimonials(currentSet);
+    }
+
+    // Show first set initially
+    showTestimonials(0);
+
+    // Rotate every 7 seconds
+    setInterval(rotateTestimonials, 7000);
+  </script>
 
 </body>
 
